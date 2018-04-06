@@ -53,13 +53,7 @@ const STRENGTH_DIFFERENCE = 10
 - `Y_TO`: axis Y of mouse up position
 - `STRENGTH_DIFFERENCE`: the default strength difference
 
-pressing key `0-9` trigger swiping mouse from
-
-`[X, Y_FROM + key * STRENGTH_DIFFERENCE]`
-
-to
-
-`[X, Y_TO]`
+pressing key `0-9` trigger swiping mouse from `[X, Y_FROM + key * STRENGTH_DIFFERENCE]` to `[X, Y_TO]`
 
 ---
 
