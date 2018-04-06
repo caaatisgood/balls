@@ -5,17 +5,19 @@ robot.setMouseDelay(2)
 
 const { width: SCREEN_WIDTH } = robot.getScreenSize()
 
+// customize your mouse position here
 const X = SCREEN_WIDTH / 2
-const DEFAULT_FROM_Y = 350
-const DEFAULT_TO_Y = 300
-const DEFAULT_STRENGTH_DIFFERENCE = 10
+const Y_FROM = 350
+const Y_TO = 300
+const STRENGTH_DIFFERENCE = 10
 
 const shoot = ({ strength }) => {
-  const fromY = DEFAULT_FROM_Y + strength * DEFAULT_STRENGTH_DIFFERENCE
-  robot.moveMouse(X, fromY)
+  const yFrom = Y_FROM + strength * STRENGTH_DIFFERENCE
+  robot.moveMouse(X, yFrom)
   robot.mouseToggle('down')
-  robot.dragMouse(X, DEFAULT_TO_Y)
+  robot.dragMouse(X, Y_TO)
   robot.mouseToggle('up')
+  console.log(`${Date.now()} - shoot ${strength}`)
 }
 
 ioHook.on('keydown', ({ keycode }) => {
@@ -34,6 +36,7 @@ ioHook.on('keydown', ({ keycode }) => {
       shoot({ strength: keycode - 1 })
       break
     case 16:
+      console.log('quit')
       process.exit()
   }
 })
